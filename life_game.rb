@@ -14,6 +14,11 @@ class Grid
       print "\n"
     end
   end
+
+  def next
+    grid = Grid.new(@height, @width, nil)
+    grid
+  end
 end
 
 grid = Grid.new(3, 3, [[0, 0], [0, 1], [1, 0]])
