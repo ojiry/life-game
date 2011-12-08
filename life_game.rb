@@ -16,7 +16,19 @@ class Grid
   end
 
   def next
-    Grid.new(@height, @width, nil)
+    array = []
+    @height.times do |i|
+      @width.times do |j|
+        live = @map.include?([i, j])
+        count = around_count(j, i)
+        if live
+          array << [i, j] if count == 2 || count == 3
+        else
+          array << [i, j] if count == 3
+        end
+      end
+    end
+    Grid.new(@height, @width, array)
   end
 
   def around_count(x, y)
@@ -32,3 +44,7 @@ end
 
 grid = Grid.new(3, 3, [[0, 0], [0, 1], [1, 0]])
 grid.display
+4.times do
+  grid = grid.next
+  grid.display
+end

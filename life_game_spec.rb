@@ -14,7 +14,8 @@ describe 'Grid' do
     its(:height) { should eq 3 }
   end
   describe '#around_count' do
-    subject { Grid.new(3, 3, [[0, 0], [0, 1], [1, 0]]).around_count(1, 1) }
-    it { should eq 3 }
+    before { @grid = Grid.new(3, 3, [[0, 0], [0, 1], [1, 0]]) }
+    it { @grid.around_count(1, 1).should eq 3 }
+    it { @grid.around_count(0, 0).should eq 2 }
   end
 end
