@@ -33,7 +33,7 @@ class Grid
     count = 0
     [y - 1, y, y + 1].each do |i|
       [x - 1, x, x + 1].each do |j|
-        count = count + 1 if @map.include?([i, j]) && !(i == y && j == x)
+        count += 1 if @map.include?([i, j]) && !(i == y && j == x)
       end
     end
     count
