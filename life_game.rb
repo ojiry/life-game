@@ -35,16 +35,16 @@ class Grid
     count = 0
     [y - 1, y, y + 1].each do |i|
       [x - 1, x, x + 1].each do |j|
-        count = count + 1 if @map.include?([i, j])
+        count = count + 1 if @map.include?([i, j]) && !(i == y && j == x)
       end
     end
     count
   end
 end
 
-grid = Grid.new(3, 3, [[0, 0], [0, 1], [1, 0]])
+grid = Grid.new(4, 4, [[0, 0], [0, 1], [1, 0], [2, 3], [3, 2], [3, 3]])
 grid.display
-4.times do
+5.times do
   grid = grid.next
   grid.display
 end
