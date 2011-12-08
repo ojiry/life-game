@@ -19,12 +19,10 @@ class Grid
     array = []
     @height.times do |i|
       @width.times do |j|
-        live = @map.include?([i, j])
-        count = around_count(j, i)
-        if live
-          array << [i, j] if count == 2 || count == 3
+        if @map.include?([i, j])
+          array << [i, j] if [2, 3].include?(around_count(j, i))
         else
-          array << [i, j] if count == 3
+          array << [i, j] if around_count(j, i) == 3
         end
       end
     end
