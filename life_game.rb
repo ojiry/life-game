@@ -16,8 +16,17 @@ class Grid
   end
 
   def next
-    grid = Grid.new(@height, @width, nil)
-    grid
+    Grid.new(@height, @width, nil)
+  end
+
+  def around_count(x, y)
+    count = 0
+    [y - 1, y, y + 1].each do |i|
+      [x - 1, x, x + 1].each do |j|
+        count = count + 1 if @map.include?([i, j])
+      end
+    end
+    count
   end
 end
 
